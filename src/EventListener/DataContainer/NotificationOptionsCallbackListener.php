@@ -6,8 +6,7 @@ use Contao\DataContainer;
 use Lukasbableck\ContaoPurgeInactiveMembersBundle\NotificationType\InactiveMemberDeleteNotificationType;
 use Terminal42\NotificationCenterBundle\NotificationCenter;
 
-#[AsCallback(table: 'tl_settings', field: 'inactiveMembersPredeleteNotification')]
-#[AsCallback(table: 'tl_settings', field: 'inactiveMembersDeleteNotification')]
+#[AsCallback(table: 'tl_settings', target: 'fields.inactiveMembersDeleteNotification.options')]
 class NotificationOptionsCallbackListener {
 	public function __construct(private readonly NotificationCenter $notificationCenter) {
 	}
