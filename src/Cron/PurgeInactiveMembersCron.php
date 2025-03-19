@@ -20,7 +20,7 @@ class PurgeInactiveMembersCron {
 		$inactiveMembers = MemberModel::findBy(['lastLogin<?', 'lastLogin>?'], [time() - $inactiveMembersPeriod, 0]);
 		foreach ($inactiveMembers as $inactiveMember) {
 			if ($inactiveMembersDeleteNotification) {
-				$this->notificationCenter->sendNotification($inactiveMembersDeleteNotification, ['member' => $inactiveMember]);
+				$this->notificationCenter->sendNotification($inactiveMembersDeleteNotification, ['member' => $inactiveMember], $inactiveMember->language);
 			}
 			$inactiveMember->delete();
 		}

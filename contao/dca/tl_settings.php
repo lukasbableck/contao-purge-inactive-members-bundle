@@ -7,7 +7,7 @@ $GLOBALS['TL_DCA']['tl_settings']['subpalettes']['purgeInactiveMembers'] = 'inac
 
 $GLOBALS['TL_DCA']['tl_settings']['fields']['purgeInactiveMembers'] = [
 	'inputType' => 'checkbox',
-	'eval' => ['tl_class' => 'w50 m12'],
+	'eval' => ['tl_class' => 'w50 m12', 'submitOnChange' => true],
 ];
 $GLOBALS['TL_DCA']['tl_settings']['fields']['inactiveMembersPeriod'] = [
 	'inputType' => 'text',
@@ -19,6 +19,7 @@ $GLOBALS['TL_DCA']['tl_settings']['fields']['inactiveMembersDeleteNotification']
 ];
 
 PaletteManipulator::create()
-	->addField('purgeInactiveMembers', 'logPeriod', PaletteManipulator::POSITION_AFTER)
+	->addLegend('purgeInactiveMembers_legend', 'timeout_legend', PaletteManipulator::POSITION_AFTER)
+	->addField('purgeInactiveMembers', 'purgeInactiveMembers_legend', PaletteManipulator::POSITION_APPEND)
 	->applyToPalette('default', 'tl_settings')
 ;
